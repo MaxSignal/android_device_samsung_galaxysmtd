@@ -1,0 +1,18 @@
+// SGX540 (DDK 1.8@2112805, matching the in-kernel pvrsrvkm) glue around the blobs
+// in vendor/samsung/galaxysmtd. The EGL wrapper takes the blob libEGL's name so the Q
+// loader finds it via ro.hardware.egl=POWERVR_SGX540_120.
+cc_library_shared {
+    name: "libEGL_POWERVR_SGX540_120",
+    relative_install_path: "egl",
+    vendor: true,
+    srcs: ["egl.c", "imgegl.c"],
+    cflags: ["-Wall", "-Werror", "-DFB_TARGET_FIX_EGL2_ALSO"],
+    shared_libs: ["libcutils", "libdl", "liblog"],
+}
+
+cc_binary {
+    name: "pvrsrvinit",
+    vendor: true,
+    srcs: ["pvrsrvinit.c"],
+    shared_libs: ["libdl"],
+}

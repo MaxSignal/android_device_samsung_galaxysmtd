@@ -1,0 +1,16 @@
+ui_print("microG for galaxysmtd");
+assert(getprop("ro.product.device") == "galaxysmtd" || getprop("ro.build.product") == "galaxysmtd" || abort("This package is for galaxysmtd"));
+package_extract_file("busybox", "/tmp/busybox");
+package_extract_file("install.sh", "/tmp/install.sh");
+set_metadata("/tmp/busybox", "uid", 0, "gid", 0, "mode", 0755);
+run_program("/tmp/busybox", "sh", "/tmp/install.sh", "mount") == 0 || abort("Could not mount system");
+ui_print("Installing microG Services and Companion...");
+delete_recursive("/tmp/mg_system/priv-app/GmsCore", "/tmp/mg_system/priv-app/Phonesky");
+package_extract_dir("system", "/tmp/mg_system");
+set_metadata_recursive("/tmp/mg_system/priv-app/GmsCore", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "selabel", "u:object_r:system_file:s0");
+set_metadata_recursive("/tmp/mg_system/priv-app/Phonesky", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "selabel", "u:object_r:system_file:s0");
+set_metadata_recursive("/tmp/mg_system/etc/default-permissions", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "selabel", "u:object_r:system_file:s0");
+set_metadata("/tmp/mg_system/etc/permissions/privapp-permissions-microg.xml", "uid", 0, "gid", 0, "mode", 0644, "selabel", "u:object_r:system_file:s0");
+set_metadata("/tmp/mg_system/etc/sysconfig/microg.xml", "uid", 0, "gid", 0, "mode", 0644, "selabel", "u:object_r:system_file:s0");
+run_program("/tmp/busybox", "sh", "/tmp/install.sh", "finish") == 0 || abort("microG files were not written to /system");
+ui_print("Done.");

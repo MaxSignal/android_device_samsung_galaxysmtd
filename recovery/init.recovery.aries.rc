@@ -1,0 +1,8 @@
+on boot
+    start s1q_rdiag
+
+service s1q_rdiag /system/bin/sh /s1q-rdiag.sh
+    user root
+    oneshot
+    disabled
+    seclabel u:r:recovery:s0

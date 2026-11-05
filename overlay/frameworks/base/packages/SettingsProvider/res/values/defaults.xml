@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bring-up: first boot is slow, keep the screen on long enough to see the UI -->
+<resources>
+    <integer name="def_screen_off_timeout">600000</integer>
+    <bool name="def_stay_on_while_plugged_in">true</bool>
+</resources>

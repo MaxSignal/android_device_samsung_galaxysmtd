@@ -1,0 +1,11 @@
+key 42    VOLUME_UP
+key 58    VOLUME_DOWN
+key 50    HOME
+key 26    ENDCALL
+key 34    BACK
+key 57    DPAD_LEFT
+key 49    DPAD_RIGHT
+key 25    DPAD_UP
+key 41    DPAD_DOWN
+key 33    DPAD_CENTER
+key 10    POWER

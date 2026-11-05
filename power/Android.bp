@@ -1,0 +1,8 @@
+cc_library_shared {
+    name: "power.aries",
+    relative_install_path: "hw",
+    vendor: true,
+    srcs: ["power.c"],
+    header_libs: ["libhardware_headers"],
+    shared_libs: ["liblog"],
+}

@@ -1,0 +1,9 @@
+# Galaxy S (aries) - Android 10 layout on moviNAND (mmcblk0):
+#   p1 = internal sdcard (vfat, untouched), p2 = data, p3 = system, p4 = cache
+# OneNAND MTD partitions (efs/radio) are resolved by name by aries-mtd.sh
+/dev/block/mmcblk0p3  /system  ext4  ro,barrier=1                                        wait,first_stage_mount
+/dev/block/mmcblk0p2  /data    ext4  noatime,nosuid,nodev,barrier=1,noauto_da_alloc      wait,check,formattable
+/dev/block/mmcblk0p4  /cache   ext4  noatime,nosuid,nodev,barrier=1                      wait,check,formattable
+/devices/platform/s3c-sdhci.0/mmc_host/mmc0*  auto  auto  defaults  voldmanaged=sdcard0:1,nonremovable
+/devices/platform/s3c-sdhci.2/mmc_host/mmc2*  auto  auto  defaults  voldmanaged=sdcard1:auto
+/dev/block/zram0      none     swap  defaults                                            zramsize=50%

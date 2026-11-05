@@ -1,0 +1,21 @@
+cc_binary {
+    name: "s1q_mtd_erase",
+    srcs: ["s1q_mtd_erase.c"],
+    vendor: true,
+    cflags: ["-Wall", "-Werror"],
+}
+
+cc_binary {
+    name: "s1q_mtd_dump",
+    srcs: ["s1q_mtd_dump.c"],
+    vendor: true,
+    cflags: ["-Wall", "-Werror"],
+}
+
+cc_binary {
+    name: "s1q_efs_migrate",
+    srcs: ["s1q_efs_migrate.c"],
+    vendor: true,
+    shared_libs: ["liblog"],
+    cflags: ["-Wall", "-Werror"],
+}

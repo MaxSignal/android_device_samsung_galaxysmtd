@@ -1,0 +1,4 @@
+# yaffs2 mount point of the modem firmware partition (/efs is labelled by the
+# platform policy)
+/radio(/.*)?    u:object_r:efs_file:s0
+/data/vendor/efs(/.*)?    u:object_r:efs_file:s0

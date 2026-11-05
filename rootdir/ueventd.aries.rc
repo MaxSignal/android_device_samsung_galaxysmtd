@@ -1,0 +1,30 @@
+/dev/graphics/fb*         0660   system     graphics
+/dev/android_adb          0660   adb        adb
+/dev/mtp_usb              0660   root       mtp
+/dev/zram0                0660   root       system
+/dev/pvrsrvkm             0666   system     system
+/dev/video0               0660   system     camera
+/dev/video1               0660   system     camera
+/dev/video2               0660   system     camera
+/dev/s3c-jpg              0660   system     camera
+/dev/s3c-mem              0660   system     system
+/dev/s3c-mfc              0660   mediacodec camera
+/dev/modem_ctl            0660   radio      radio
+# libsec-ril (rild runs as radio): XMM6160 shared memory and modem control
+/dev/onedram              0660   radio      radio
+/sys/devices/platform/modemctl* control 0664 radio radio
+/sys/devices/platform/modemctl* status  0664 radio radio
+/dev/modem_fmt            0660   radio      radio
+/dev/modem_rfs            0660   radio      radio
+/dev/s3c2410_serial0      0660   bluetooth  bluetooth
+/dev/s3c2410_serial1      0600   gps        gps
+/dev/s3c2410_serial3      0660   radio      radio
+/dev/yamaha_compass       0660   system     system
+/dev/accelerometer        0660   system     system
+/dev/radio0               0660   system     audio
+/sys/devices/virtual/input/input*   delay      0660  system   input
+/sys/devices/virtual/input/input*   poll_delay 0660  system   input
+/sys/devices/virtual/input/input*   enable     0660  system   input
+/dev/input/event*         0660   system     input
+/sys/devices/virtual/timed_output/vibrator enable 0660 system system
+/sys/devices/virtual/misc/notification       led    0660 system system

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- The S5PC110 MFC through the SEC OMX components first (byte buffers: the
+     decoders convert their tiled NV12 output to YUV420 planar), the software
+     codecs as the fallback. MFC 5.0 decodes and encodes up to 720p. -->
+<MediaCodecs>
+    <Decoders>
+        <MediaCodec name="OMX.SEC.AVC.Decoder" type="video/avc">
+            <Limit name="size" min="32x32" max="1280x720" />
+            <Limit name="alignment" value="2x2" />
+            <Limit name="block-size" value="16x16" />
+            <Limit name="blocks-per-second" range="1-108000" />
+        </MediaCodec>
+        <MediaCodec name="OMX.SEC.MPEG4.Decoder" type="video/mp4v-es">
+            <Limit name="size" min="32x32" max="1280x720" />
+            <Limit name="alignment" value="2x2" />
+            <Limit name="block-size" value="16x16" />
+            <Limit name="blocks-per-second" range="1-108000" />
+        </MediaCodec>
+        <MediaCodec name="OMX.SEC.H263.Decoder" type="video/3gpp">
+            <Limit name="size" min="32x32" max="704x576" />
+            <Limit name="alignment" value="2x2" />
+        </MediaCodec>
+    </Decoders>
+    <Encoders>
+        <MediaCodec name="OMX.SEC.AVC.Encoder" type="video/avc">
+            <Limit name="size" min="32x32" max="1280x720" />
+            <Limit name="alignment" value="16x16" />
+        </MediaCodec>
+        <MediaCodec name="OMX.SEC.MPEG4.Encoder" type="video/mp4v-es">
+            <Limit name="size" min="32x32" max="1280x720" />
+            <Limit name="alignment" value="16x16" />
+        </MediaCodec>
+        <MediaCodec name="OMX.SEC.H263.Encoder" type="video/3gpp">
+            <Limit name="size" min="32x32" max="704x576" />
+            <Limit name="alignment" value="16x16" />
+        </MediaCodec>
+    </Encoders>
+    <Include href="media_codecs_google_audio.xml" />
+    <Include href="media_codecs_google_telephony.xml" />
+    <Include href="media_codecs_google_video_le.xml" />
+</MediaCodecs>

@@ -1,0 +1,15 @@
+ui_print("Galaxy S (GT-I9000)");
+ui_print("LineageOS 17.1 (Android 10 Go)");
+assert(getprop("ro.product.device") == "galaxysmtd" || getprop("ro.build.product") == "galaxysmtd" || abort("This package is for galaxysmtd"));
+package_extract_file("busybox", "/tmp/busybox");
+package_extract_file("repart.sh", "/tmp/repart.sh");
+package_extract_file("s1q_blkpg", "/tmp/s1q_blkpg");
+set_metadata("/tmp/s1q_blkpg", "uid", 0, "gid", 0, "mode", 0755);
+set_metadata("/tmp/busybox", "uid", 0, "gid", 0, "mode", 0755);
+set_metadata("/tmp/repart.sh", "uid", 0, "gid", 0, "mode", 0755);
+ui_print("Checking moviNAND partitions...");
+run_program("/tmp/busybox", "sh", "/tmp/repart.sh", "apply") == 0 || abort("Repartitioning failed");
+ui_print("Writing system (this takes a while)...");
+package_extract_file("system.img", "/dev/block/mmcblk0p3");
+run_program("/tmp/busybox", "sh", "/tmp/repart.sh", "format");
+ui_print("Done. If you have not done it yet, flash the kernel (Odin/Heimdall).");
